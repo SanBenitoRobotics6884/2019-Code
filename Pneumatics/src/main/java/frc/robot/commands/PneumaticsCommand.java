@@ -7,44 +7,42 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.subsystems.PneumaticsSubsystem;
 
 public class PneumaticsCommand extends Command {
 
-  // initializes PneumaticsSubsystem
-  public PneumaticsSubsystem pneumatics;
-  int counter;
+  private boolean finished;
 
   public PneumaticsCommand() {
     // defines PneumaticsSubsystem so it can be used by this class
-    pneumatics = new PneumaticsSubsystem();
-    pneumatics.retract();
+    Robot.pneumatics = new PneumaticsSubsystem();
+    Robot.pneumatics.retract();
+
     // necessary to allow the class to use the pneumatics subsystem because
     // only one class may use a subsystem at a time.
-    requires(pneumatics);
+    requires(Robot.pneumatics);
   }
 
   @Override
   protected void initialize() {
-    counter = 0;
-    pneumatics.extend();
+
   }
 
   @Override
   protected void execute() {
-    counter++;
+    //extends piston, waits a second, and retracts it
+    Robot.pneumatics.extend();
+    Timer.delay(1);
+    Robot.pneumatics.retract();
+    finished = true;
   }
 
   @Override
   protected boolean isFinished() {
-    System.out.println("isFinished");
-    if (counter > 50) {
-      pneumatics.retract();
-      counter = 0;
-      System.out.println("50");
-      return true;
-    }
+    if (finished) return true;
     return false;
   }
 

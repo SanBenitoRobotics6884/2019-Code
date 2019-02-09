@@ -9,17 +9,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.DriveSystem;
+import frc.robot.Robot;
 
 public class Drive extends Command {
-  private DriveSystem drive;
+  //initializes the subsystems and joystick
   private Joystick stick;
 
   public Drive() {
-    drive = new DriveSystem();
+    // defines the subsystems and joystick
     stick = new Joystick(0);
 
-    requires(drive);
+    //Makes it so that this is the only command that can access the drive subsystem at a time
+    requires(Robot.driveSystem);
   }
 
   @Override
@@ -28,7 +29,8 @@ public class Drive extends Command {
 
   @Override
   protected void execute() {
-    drive.driveRobot(-stick.getY(), stick.getX());
+    //calls the drive function of the drive subsystem. sets the robot's speed and turning to the joystick
+    Robot.driveSystem.driveRobot(-stick.getY(), stick.getX());
   }
 
   @Override

@@ -22,6 +22,7 @@ import frc.robot.subsystems.WristSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
+  //initializes subsystems
   public static OI m_oi;
   public static WristSubsystem wrist;
 
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    //defines the subsystems
     m_oi = new OI();
     wrist = new WristSubsystem();
 
@@ -109,6 +111,7 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
 
+    //enables the PID Controller for the wrist class
     wrist.m_pidController.enable();
 
     if (m_autonomousCommand != null) {

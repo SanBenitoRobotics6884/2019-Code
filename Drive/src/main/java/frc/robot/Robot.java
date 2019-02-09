@@ -13,8 +13,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Drive;
+import frc.robot.subsystems.DriveSystem;
 
 public class Robot extends TimedRobot {
+
+  public static DriveSystem driveSystem;
 
   Command drive;
   Command m_autonomousCommand;
@@ -23,6 +26,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     drive = new Drive();
+    driveSystem = new DriveSystem();
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -56,6 +60,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    //starts the drive command
     drive.start();
 
     if (m_autonomousCommand != null) {

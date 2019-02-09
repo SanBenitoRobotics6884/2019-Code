@@ -14,27 +14,34 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 
 public class DriveSystem extends Subsystem {
-   private Spark l_front, l_back, r_front, r_back;
+  //instantiates all motors and speed controller groups
+  private Spark l_front, l_back, r_front, r_back;
   private SpeedControllerGroup l_motors, r_motors;
   private DifferentialDrive mdrive;
 
   public DriveSystem() {
 
+    //defines all motors and assigns them to ports
     l_front = new Spark(RobotMap.LEFTFRONT);
     l_back = new Spark(RobotMap.LEFTBACK);
     r_front = new Spark(RobotMap.RIGHTFRONT);
     r_back = new Spark(RobotMap.RIGHTBACK);
 
+    //creates speed controller group for each side of the robot so it can be controlled
     l_motors = new SpeedControllerGroup(l_front, l_back);
     r_motors = new SpeedControllerGroup(r_front, r_back);
 
+    //creates a drive that can be controlled directly with joystick input
     mdrive = new DifferentialDrive(l_motors, r_motors);
   }
 
+  //function that modifies the input from the joystick which makes the robot more controllable at low speeds
   private double ramp(double inputAxis) {
+    //cubes the input
     return Math.pow(inputAxis, 3);
   }
 
+  //drives the robot with speed and rotation parameters
   public void driveRobot(double speed, double rotation) {
     mdrive.curvatureDrive(ramp(speed), rotation, true);
   }

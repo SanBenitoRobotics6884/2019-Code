@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-
+import frc.robot.subsystems.PneumaticsSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,16 +25,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  //initializes oi and pneumatics subsystem. Declare all subsystems in the robot class
+  //so that you can have multiple commands using the same subsystem
   OI m_oi;
+  public static PneumaticsSubsystem pneumatics;
 
   @Override
   public void robotInit() {
+    //defines subsystems
     m_oi = new OI();
+    pneumatics = new PneumaticsSubsystem();
 
+    //starts capturing image from camera
     CameraServer server = CameraServer.getInstance();
     server.startAutomaticCapture(0);
-
-    //SmartDashboard.putData("Extend", new PneumaticsCommand());
   }
 
   @Override

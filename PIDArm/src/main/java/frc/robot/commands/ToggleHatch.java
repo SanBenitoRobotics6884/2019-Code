@@ -11,18 +11,22 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ToggleHatch extends Command {
+  //instantiates variables
   private int status;
   private boolean finished;
   private double setpoint;
 
   public ToggleHatch() {
     status = 0;
+
+    //only one command can access a subsystem at a time. This claims control over the subsystem
     requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    //causes the value of status to alternate between one and two each time the command is initialized
     status = (status + 1) % 2;
   }
 
@@ -30,9 +34,11 @@ public class ToggleHatch extends Command {
   @Override
   protected void execute() {
 
+    //adds 5 to the PID setpoint for wrist subsystem
     setpoint = Robot.wrist.height + (status * 5);
     Robot.wrist.wristSetpoint(setpoint);
 
+    //makes the command exit the scheduler. No longer gets called
     finished = true;
   }
 

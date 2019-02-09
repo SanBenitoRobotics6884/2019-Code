@@ -27,6 +27,7 @@ public class WristCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    //changes the setpoint based on input
     if (pointIn == 0) {
       setpoint = 0;
     } else if (pointIn == 1) {
@@ -40,6 +41,7 @@ public class WristCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //changes the setpoint of the wrist PID controller
     Robot.wrist.wristSetpoint(setpoint);
     finished = true;
   }

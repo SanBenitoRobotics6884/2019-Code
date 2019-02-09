@@ -28,7 +28,6 @@ public class PneumaticsSubsystem extends Subsystem {
   public PneumaticsSubsystem() {
     //defining all necessary classes
     map = new RobotMap();
-    //m_oi = new OI();
     compressor = new Compressor(0);
     doublesolenoid = new DoubleSolenoid(2, 3);
 
@@ -36,9 +35,11 @@ public class PneumaticsSubsystem extends Subsystem {
     compressor.setClosedLoopControl(true);
   }
 
+  //extends piston when this function is called
   public void extend() {
     doublesolenoid.set(DoubleSolenoid.Value.kForward);
   }
+  //retracts piston when this function is called
   public void retract() {
     doublesolenoid.set(DoubleSolenoid.Value.kReverse);
   }
