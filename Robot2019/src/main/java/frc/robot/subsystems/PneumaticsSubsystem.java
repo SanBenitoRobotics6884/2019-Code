@@ -10,14 +10,12 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.OI;
 import frc.robot.RobotMap;
 
 public class PneumaticsSubsystem extends Subsystem {
   //Initializing all subsystems and other necessary classes
   public Compressor compressor;
   public DoubleSolenoid doublesolenoid;
-  public static OI m_oi;
   public RobotMap map;
 
   //initializing variables
@@ -28,17 +26,18 @@ public class PneumaticsSubsystem extends Subsystem {
   public PneumaticsSubsystem() {
     //defining all necessary classes
     map = new RobotMap();
-    //m_oi = new OI();
-    compressor = new Compressor(0);
-    doublesolenoid = new DoubleSolenoid(2, 3);
+    compressor = new Compressor(map.COMPRESSOR_PORT);
+    doublesolenoid = new DoubleSolenoid(map.SOLENOID_PORT1, map.SOLENOID_PORT2);
 
     //makes compressor work for some reason
     compressor.setClosedLoopControl(true);
   }
 
+  //extends piston when this function is called
   public void extend() {
     doublesolenoid.set(DoubleSolenoid.Value.kForward);
   }
+  //retracts piston when this function is called
   public void retract() {
     doublesolenoid.set(DoubleSolenoid.Value.kReverse);
   }

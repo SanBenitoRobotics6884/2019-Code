@@ -27,4 +27,10 @@ public class RobotMap {
   public static int LEFTBACK = 4;
   public static int RIGHTFRONT = 1;
   public static int RIGHTBACK = 2;
+
+  public final int COMPRESSOR_PORT = 0;
+  public final int SOLENOID_PORT1 = 2;
+  public final int SOLENOID_PORT2 = 3;
+  
+  public static int ELEVATOR_MOTOR = 0;
 }

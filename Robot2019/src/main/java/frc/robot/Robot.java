@@ -7,12 +7,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Drive;
+import frc.robot.subsystems.ElevatorSystem;
 
 public class Robot extends TimedRobot {
 
@@ -21,11 +23,16 @@ public class Robot extends TimedRobot {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   OI m_oi;
+  public static ElevatorSystem arm;
 
   @Override
   public void robotInit() {
     m_oi = new OI();
     drive = new Drive();
+    arm = new ElevatorSystem();
+
+    CameraServer server = CameraServer.getInstance();
+    server.startAutomaticCapture(0);
 
     SmartDashboard.putData("Auto mode", m_chooser);
   }

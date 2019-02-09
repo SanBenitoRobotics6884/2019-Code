@@ -17,6 +17,8 @@ import frc.robot.RobotMap;
 public class WristSubsystem extends Subsystem {
 
 public double height;
+public int hatchStatus = 0;
+public int addHatchHeight;
 
 //creates variables to tune PID controller
 private static final double kP = -5.0;
@@ -42,8 +44,16 @@ public void wristSubsystem() {
   public void wristSetpoint(double setpoint) {
 
     //sets the input to the input
-    m_pidController.setSetpoint(setpoint);
+    m_pidController.setSetpoint(setpoint + addHatchHeight);
     height = setpoint;
+
+  }
+
+  public void toggleHatch() {
+    hatchStatus = (hatchStatus + 1) % 2;
+    addHatchHeight = hatchStatus * 5;
+
+    wristSetpoint(height);
 
   }
 
