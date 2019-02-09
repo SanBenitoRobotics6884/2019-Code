@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,18 +18,17 @@ import frc.robot.subsystems.DriveSystem;
 
 public class Robot extends TimedRobot {
 
-  public static DriveSystem driveSystem;
+  public static DriveSystem driveSystem = new DriveSystem();
 
-  Command drive;
+  Command drive = new Drive();
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   @Override
   public void robotInit() {
-    drive = new Drive();
-    driveSystem = new DriveSystem();
-
     SmartDashboard.putData("Auto mode", m_chooser);
+
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   @Override

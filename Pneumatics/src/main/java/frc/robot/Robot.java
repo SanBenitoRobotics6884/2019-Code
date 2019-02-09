@@ -28,15 +28,11 @@ public class Robot extends TimedRobot {
 
   //initializes oi and pneumatics subsystem. Declare all subsystems in the robot class
   //so that you can have multiple commands using the same subsystem
-  OI m_oi;
-  public static PneumaticsSubsystem pneumatics;
+  OI m_oi = new OI();
+  public static PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
 
   @Override
   public void robotInit() {
-    //defines subsystems
-    m_oi = new OI();
-    pneumatics = new PneumaticsSubsystem();
-
     //starts capturing image from camera
     CameraServer server = CameraServer.getInstance();
     server.startAutomaticCapture(0);

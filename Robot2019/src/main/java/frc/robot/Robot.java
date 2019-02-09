@@ -11,30 +11,22 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Drive;
+import frc.robot.subsystems.DriveSystem;
 import frc.robot.subsystems.ElevatorSystem;
 
 public class Robot extends TimedRobot {
 
-  Command drive;
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  Command drive = new Drive();
 
-  OI m_oi;
-  public static ElevatorSystem arm;
+  OI m_oi = new OI();
+  public static ElevatorSystem arm = new ElevatorSystem();
+  public static DriveSystem drivebase = new DriveSystem();
 
   @Override
   public void robotInit() {
-    m_oi = new OI();
-    drive = new Drive();
-    arm = new ElevatorSystem();
-
     CameraServer server = CameraServer.getInstance();
     server.startAutomaticCapture(0);
-
-    SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   @Override
@@ -52,11 +44,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
 
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
   }
 
   @Override
@@ -67,10 +55,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     drive.start();
-
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
   }
 
 

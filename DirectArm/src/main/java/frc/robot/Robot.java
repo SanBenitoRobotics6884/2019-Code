@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,8 +17,8 @@ import frc.robot.subsystems.ElevatorSystem;
 
 public class Robot extends TimedRobot {
   //initializes the subsystems
-  public static OI m_oi;
-  public static ElevatorSystem elevator;
+  public static OI m_oi = new OI();
+  public static ElevatorSystem elevator = new ElevatorSystem();
 
   //?
   Command m_autonomousCommand;
@@ -27,9 +26,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    //defines the subsystems
-    m_oi = new OI();
-    elevator = new ElevatorSystem();
 
     // chooser.addObject("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

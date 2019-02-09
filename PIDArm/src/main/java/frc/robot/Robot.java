@@ -23,8 +23,8 @@ import frc.robot.subsystems.WristSubsystem;
  */
 public class Robot extends TimedRobot {
   //initializes subsystems
-  public static OI m_oi;
-  public static WristSubsystem wrist;
+  public static OI m_oi = new OI();
+  public static WristSubsystem wrist = new WristSubsystem();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -35,10 +35,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    //defines the subsystems
-    m_oi = new OI();
-    wrist = new WristSubsystem();
-
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

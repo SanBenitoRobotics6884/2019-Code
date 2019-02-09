@@ -9,17 +9,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.subsystems.DriveSystem;
+import frc.robot.Robot;
 
 public class Drive extends Command {
-  private DriveSystem drive;
-  private Joystick stick;
+  private Joystick stick = new Joystick(0);
 
   public Drive() {
-    drive = new DriveSystem();
-    stick = new Joystick(0);
-
-    requires(drive);
+    requires(Robot.drivebase);
   }
 
   @Override
@@ -28,7 +24,7 @@ public class Drive extends Command {
 
   @Override
   protected void execute() {
-    drive.driveRobot(-stick.getY(), stick.getX());
+    Robot.drivebase.driveRobot(-stick.getY(), stick.getX());
   }
 
   @Override

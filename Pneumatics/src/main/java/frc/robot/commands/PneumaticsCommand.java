@@ -10,15 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.PneumaticsSubsystem;
 
 public class PneumaticsCommand extends Command {
 
   private boolean finished;
 
   public PneumaticsCommand() {
-    // defines PneumaticsSubsystem so it can be used by this class
-    Robot.pneumatics = new PneumaticsSubsystem();
     Robot.pneumatics.retract();
 
     // necessary to allow the class to use the pneumatics subsystem because

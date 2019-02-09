@@ -27,14 +27,10 @@ private static final double kD = -2.0;
 
 //initializes PID controller, potentiometer, and motor controller
 public PIDController m_pidController;
-private AnalogPotentiometer m_potentiometer;
-private SpeedController m_elevatorMotor;
+private AnalogPotentiometer m_potentiometer = new AnalogPotentiometer(RobotMap.ARM_POT);
+private SpeedController m_elevatorMotor = new Spark(RobotMap.ARM_MOTOR);
 
 public void wristSubsystem() {
-  //defines the potentiometer and motor
-  m_potentiometer = new AnalogPotentiometer(RobotMap.ARM_POT);
-    m_elevatorMotor = new Spark(RobotMap.ARM_MOTOR);
-
     //creates pid controller using the kP, kI, kD constants and using the potentiometer as an input
     m_pidController = new PIDController(kP, kI, kD, m_potentiometer, m_elevatorMotor);
     //sets the input range from 0-5 volts (min/max voltage of potentiometer)

@@ -13,14 +13,12 @@ import frc.robot.RobotMap;
 
 public class ElevatorSystem extends Subsystem {
   //initializes the arm motor
-  private Spark motorcontroller;
+  private Spark motorcontroller = new Spark(RobotMap.ELEVATOR_MOTOR);
 
   //initializes level variable
   private int level;
 
   public ElevatorSystem() {
-    //defines the arm motor and level
-    motorcontroller = new Spark(RobotMap.ELEVATOR_MOTOR);
     level = 1;
   }
 

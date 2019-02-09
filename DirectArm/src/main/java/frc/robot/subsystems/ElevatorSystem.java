@@ -16,15 +16,13 @@ import frc.robot.RobotMap;
 public class ElevatorSystem extends Subsystem {
 
   //initializes all variables to be defined in the constructor
-  private SpeedController motorcontroller;
-  private RobotMap map;
-  private Joystick stick;
+  private RobotMap map = new RobotMap();
+  private SpeedController motorcontroller = new Spark(map.ELEVATOR_MOTOR);
+  private Joystick stick = new Joystick(map.JOYSTICK_PORT);
 
   //defines all variables and systems
   public ElevatorSystem() {
-    map = new RobotMap();
-    stick = new Joystick(map.JOYSTICK_PORT);
-    motorcontroller = new Spark(map.ELEVATOR_MOTOR);
+    
   }
 
   //moves the arm motor according to the joystick

@@ -14,9 +14,8 @@ import frc.robot.RobotMap;
 
 public class PneumaticsSubsystem extends Subsystem {
   //Initializing all subsystems and other necessary classes
-  public Compressor compressor;
-  public DoubleSolenoid doublesolenoid;
-  public RobotMap map;
+  public Compressor compressor = new Compressor(RobotMap.COMPRESSOR_PORT);
+  public DoubleSolenoid doublesolenoid = new DoubleSolenoid(RobotMap.SOLENOID_PORT1, RobotMap.SOLENOID_PORT2);
 
   //initializing variables
   public Boolean prev;
@@ -24,11 +23,6 @@ public class PneumaticsSubsystem extends Subsystem {
   public int toggleInt;
 
   public PneumaticsSubsystem() {
-    //defining all necessary classes
-    map = new RobotMap();
-    compressor = new Compressor(map.COMPRESSOR_PORT);
-    doublesolenoid = new DoubleSolenoid(map.SOLENOID_PORT1, map.SOLENOID_PORT2);
-
     //makes compressor work for some reason
     compressor.setClosedLoopControl(true);
   }

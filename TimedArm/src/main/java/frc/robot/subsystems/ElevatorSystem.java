@@ -12,14 +12,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ElevatorSystem extends Subsystem {
   //initializes the arm motor
-  private Spark motorcontroller;
+  private Spark motorcontroller = new Spark(5);
 
   //initializes level variable
   private int level;
 
   public ElevatorSystem() {
-    //defines the arm motor and level
-    motorcontroller = new Spark(5);
     level = 1;
   }
 

@@ -14,21 +14,18 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 
 public class DriveSystem extends Subsystem {
-   private Spark l_front, l_back, r_front, r_back;
-  private SpeedControllerGroup l_motors, r_motors;
-  private DifferentialDrive mdrive;
+  private Spark l_front = new Spark(RobotMap.LEFTFRONT);
+  private Spark l_back = new Spark(RobotMap.LEFTBACK);
+  private Spark r_front = new Spark(RobotMap.RIGHTFRONT);
+  private Spark r_back = new Spark(RobotMap.RIGHTBACK);
+
+  private SpeedControllerGroup l_motors = new SpeedControllerGroup(l_front, l_back);
+  private SpeedControllerGroup r_motors = new SpeedControllerGroup(r_front, r_back);
+
+  private DifferentialDrive mdrive = new DifferentialDrive(l_motors, r_motors);
 
   public DriveSystem() {
-
-    l_front = new Spark(RobotMap.LEFTFRONT);
-    l_back = new Spark(RobotMap.LEFTBACK);
-    r_front = new Spark(RobotMap.RIGHTFRONT);
-    r_back = new Spark(RobotMap.RIGHTBACK);
-
-    l_motors = new SpeedControllerGroup(l_front, l_back);
-    r_motors = new SpeedControllerGroup(r_front, r_back);
-
-    mdrive = new DifferentialDrive(l_motors, r_motors);
+    
   }
 
   private double ramp(double inputAxis) {
