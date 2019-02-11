@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.MoveArm;
 
 public class ElevatorSystem extends Subsystem {
 
@@ -32,6 +33,6 @@ public class ElevatorSystem extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-
+    setDefaultCommand(new MoveArm());
   }
 }

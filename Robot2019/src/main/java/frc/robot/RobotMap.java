@@ -32,5 +32,8 @@ public class RobotMap {
   public static final int SOLENOID_PORT1 = 2;
   public static final int SOLENOID_PORT2 = 3;
   
-  public static int ELEVATOR_MOTOR = 0;
+  public int ELEVATOR_MOTOR = 0;
+
+  public int JOYSTICK_0 = 0;
+  public int JOYSTICK_1 = 1;
 }

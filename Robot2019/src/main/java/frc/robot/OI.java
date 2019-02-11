@@ -8,12 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
-import frc.robot.commands.ElevatorDock;
 import frc.robot.commands.PneumaticsCommand;
-import frc.robot.commands.ToggleHatch;
 
 
 /**
@@ -51,15 +48,8 @@ public class OI {
   Joystick stick = new Joystick(0);
 
   Trigger trig = new JoystickButton(stick, 1);
-  Button button7 = new JoystickButton(stick,7);
-  Button button9 = new JoystickButton(stick,9);
-  Button button2 = new JoystickButton(stick,2);
 
   public OI() {
     trig.whenActive(new PneumaticsCommand());
-
-    button7.whenPressed(new ElevatorDock(2));
-    button9.whenPressed(new ElevatorDock(1));
-    button2.whenPressed(new ToggleHatch());
   }
 }

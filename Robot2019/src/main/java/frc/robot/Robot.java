@@ -14,14 +14,16 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.commands.Drive;
 import frc.robot.subsystems.DriveSystem;
 import frc.robot.subsystems.ElevatorSystem;
+import frc.robot.subsystems.PneumaticsSubsystem;
 
 public class Robot extends TimedRobot {
 
   Command drive = new Drive();
 
   OI m_oi = new OI();
-  public static ElevatorSystem arm = new ElevatorSystem();
   public static DriveSystem drivebase = new DriveSystem();
+  public static PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
+  public static ElevatorSystem elevator = new ElevatorSystem();
 
   @Override
   public void robotInit() {

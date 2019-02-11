@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class DriveSystem extends Subsystem {
@@ -38,12 +39,13 @@ public class DriveSystem extends Subsystem {
   //function that modifies the input from the joystick which makes the robot more controllable at low speeds
   private double ramp(double inputAxis) {
     //cubes the input
-    return Math.pow(inputAxis, 3);
+    return Math.pow(inputAxis, 3) * 0.4;
   }
 
   //drives the robot with speed and rotation parameters
   public void driveRobot(double speed, double rotation) {
-    mdrive.curvatureDrive(ramp(speed), rotation, true);
+    mdrive.curvatureDrive(speed * 0.4, rotation * 0.4, true);
+    SmartDashboard.putNumber("Ramp", ramp(speed));
   }
 
   @Override

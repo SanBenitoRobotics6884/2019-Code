@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
+import frc.robot.commands.Drive;
 
 public class DriveSystem extends Subsystem {
   private Spark l_front = new Spark(RobotMap.LEFTFRONT);
@@ -28,15 +29,18 @@ public class DriveSystem extends Subsystem {
     
   }
 
+  /*
   private double ramp(double inputAxis) {
     return Math.pow(inputAxis, 3);
   }
+  */
 
   public void driveRobot(double speed, double rotation) {
-    mdrive.curvatureDrive(ramp(speed), rotation, true);
+    mdrive.curvatureDrive(speed * 0.5, rotation * 0.5, true);
   }
 
   @Override
   public void initDefaultCommand() {
+    setDefaultCommand(new Drive());
   }
 }

@@ -7,43 +7,32 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.MoveArm;
 
 public class ElevatorSystem extends Subsystem {
-  //initializes the arm motor
-  private Spark motorcontroller = new Spark(RobotMap.ELEVATOR_MOTOR);
 
-  //initializes level variable
-  private int level;
+  //initializes all variables to be defined in the constructor
+  private RobotMap map = new RobotMap();
+  private SpeedController motorcontroller = new Spark(map.ELEVATOR_MOTOR);
+  private Joystick stick = new Joystick(map.JOYSTICK_1);
 
+  //defines all variables and systems
   public ElevatorSystem() {
-    level = 1;
+    
   }
 
-  //sets the speed of the arm motor
-  public void moveArm(double speed) {
-    motorcontroller.set(speed);
-  }
-
-  //stops the arm
-  public void stopArm() {
-    motorcontroller.set(0);
-  }
-
-  //sets the level variable for the subsystem
-  public void setLevel(int lvl) {
-    level = lvl;
-  }
-
-  //returns the level variable
-  public int getLevel() {
-    return level;
+  //moves the arm motor according to the joystick
+  public void moveArm() {
+    motorcontroller.set(stick.getY());
   }
 
   @Override
   public void initDefaultCommand() {
-
+    setDefaultCommand(new MoveArm());
   }
 }
