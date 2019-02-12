@@ -36,7 +36,7 @@ public class DriveSystem extends Subsystem {
   */
 
   public void driveRobot(double speed, double rotation) {
-    mdrive.curvatureDrive(speed * 0.5, rotation * 0.5, true);
+    mdrive.curvatureDrive(speed * 0.5, rotation * 0.3, true);
   }
 
   @Override

@@ -12,7 +12,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class Drive extends Command {
-  private Joystick stick = new Joystick(0);
+  private Joystick stick = new Joystick(1);
+
+  private double speed = 0;
+  private double rotation = 0;
 
   public Drive() {
     requires(Robot.drivebase);
@@ -24,7 +27,23 @@ public class Drive extends Command {
 
   @Override
   protected void execute() {
-    Robot.drivebase.driveRobot(-stick.getY(), stick.getX());
+    if (stick.getRawAxis(3) > 0) {
+      speed = stick.getRawAxis(3);
+
+    } else if (stick.getRawAxis(2) > 0) {
+      speed = -stick.getRawAxis(2);
+
+    } else {
+      speed = 0;
+
+    }
+
+    /*
+    speed = stick.getRawAxis(3) - stick.getRawAxis(2);
+    */
+
+    rotation = stick.getRawAxis(0);
+    Robot.drivebase.driveRobot(speed, rotation);
   }
 
   @Override

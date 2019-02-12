@@ -36,11 +36,9 @@ public class PneumaticsCommand extends Command {
 
   @Override
   protected boolean isFinished() {
-    System.out.println("isFinished");
-    if (counter > 50) {
+    if (counter > 25) {
       Robot.pneumatics.retract();
       counter = 0;
-      System.out.println("50");
       return true;
     }
     return false;

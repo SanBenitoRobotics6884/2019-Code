@@ -25,14 +25,33 @@ public class Robot extends TimedRobot {
   public static PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
   public static ElevatorSystem elevator = new ElevatorSystem();
 
+  /*
+  private Joystick gamepad = new Joystick(1);
+  AnalogInput ultrasonic = new AnalogInput(0);
+  int scale = 43;
+  double scaledVal;
+  */
+
   @Override
   public void robotInit() {
     CameraServer server = CameraServer.getInstance();
     server.startAutomaticCapture(0);
+
   }
 
   @Override
   public void robotPeriodic() {
+    drive.start();
+
+    /*
+    scaledVal = Math.round(ultrasonic.getAverageVoltage() * scale);
+    SmartDashboard.putNumber("Distance: ", scaledVal);
+
+    if (scaledVal < 50) {
+      gamepad.setRumble(RumbleType.kLeftRumble, (50-scaledVal) / 50);
+      gamepad.setRumble(RumbleType.kRightRumble, (50-scaledVal) / 50);
+    }
+    */
   }
 
   @Override
@@ -56,7 +75,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    drive.start();
   }
 
 

@@ -19,16 +19,20 @@ public class ElevatorSystem extends Subsystem {
   //initializes all variables to be defined in the constructor
   private RobotMap map = new RobotMap();
   private SpeedController motorcontroller = new Spark(map.ELEVATOR_MOTOR);
-  private Joystick stick = new Joystick(map.JOYSTICK_1);
+  private Joystick stick = new Joystick(0);
 
   //defines all variables and systems
   public ElevatorSystem() {
     
   }
 
+  private double ramp(double inputAxis) {
+    return Math.pow(inputAxis, 1) * 0.7;
+  }
+
   //moves the arm motor according to the joystick
   public void moveArm() {
-    motorcontroller.set(stick.getY());
+    motorcontroller.set(ramp(stick.getY()));
   }
 
   @Override
