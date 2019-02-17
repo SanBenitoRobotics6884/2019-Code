@@ -1,0 +1,16 @@
+[
+  {
+    "artifact": "frcJava (in project Robot2019 - 2 Joystick)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Robot2019 - 2 Joystick",
+    "language": "java"
+  },
+  {
+    "artifact": "frcJava (in project Robot2019)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Robot2019",
+    "language": "java"
+  }
+]

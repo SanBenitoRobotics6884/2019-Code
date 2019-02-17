@@ -1,0 +1,9 @@
+[
+  {
+    "artifact": "frcJava (in project Pneumatics for 7777)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Pneumatics for 7777",
+    "language": "java"
+  }
+]
