@@ -8,12 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Drive;
 import frc.robot.subsystems.DriveSystem;
 import frc.robot.subsystems.ElevatorSystem; 
@@ -28,13 +25,6 @@ public class Robot extends TimedRobot {
   public static PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
   public static ElevatorSystem elevator = new ElevatorSystem();
 
-  /*
-  AnalogInput ultrasonic = new AnalogInput(0);
-  int scale = 43;
-  double scaledVal;
-  */
-
-
   @Override
   public void robotInit() {
     CameraServer server = CameraServer.getInstance();
@@ -46,10 +36,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    /*
-    scaledVal = Math.round(ultrasonic.getAverageVoltage() * scale);
-    SmartDashboard.putNumber("Distance: ", scaledVal);
-    */
+  
   }
 
   @Override

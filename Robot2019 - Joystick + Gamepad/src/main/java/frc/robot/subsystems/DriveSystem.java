@@ -25,7 +25,7 @@ public class DriveSystem extends Subsystem {
 
   private DifferentialDrive mdrive = new DifferentialDrive(l_motors, r_motors);
 
-  private double trim = 0.03;
+  private double trim = -0.07;
 
   public DriveSystem() {
     
